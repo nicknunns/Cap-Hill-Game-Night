@@ -10,5 +10,6 @@
   
   get '/' do
     @msg = @client.show('chgamenight')['status']['text']
+    @date = @client.show('chgamenight')['status']['created_at']
     erb :home
   end

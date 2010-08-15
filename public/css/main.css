@@ -1,11 +1,19 @@
-#wrap{
-	width: 320px;
-	margin: 20px auto 0 auto;
-	padding: 10px;
-	border: 2px solid #666;
+*{
 	font-family: "Helvetica Neue", Helvetica, "sans serif";
 }
 
+a, a:visited{
+	text-decoration: none;
+	color: #ff6600;
+}
+
+#block{
+	width: 320px;
+	margin: 40px auto 0 auto;
+	padding: 10px;
+	border: 2px solid #666;
+	background: white;
+}
 
 #title {
 	text-align: center;
@@ -14,4 +22,21 @@
 	padding: 2px 10px 2px 10px;
 	margin-bottom: 10px;
 	border-bottom: 1px dotted #666;
+}
+
+#time {
+	font-size: 11px;
+	margin: 10px 0 0 0;
+	text-align: right;
+}
+
+#footer {
+	position: absolute; 
+	bottom: 0;
+	right: 0;
+	margin: 2px;
+	padding: 2px;
+	font-size: 10px;
+	text-align: right;
+	background: white;
 }
