@@ -1,0 +1,17 @@
+#wrap{
+	width: 320px;
+	margin: 20px auto 0 auto;
+	padding: 10px;
+	border: 2px solid #666;
+	font-family: "Helvetica Neue", Helvetica, "sans serif";
+}
+
+
+#title {
+	text-align: center;
+	font-size: 28px;
+	color: #ff6600;
+	padding: 2px 10px 2px 10px;
+	margin-bottom: 10px;
+	border-bottom: 1px dotted #666;
+}
