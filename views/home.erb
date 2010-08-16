@@ -18,15 +18,13 @@
 			<%= @msg %>
 		</div>
 		<div id = "time">
-			Posted at <%= @date %>
+			Posted: <%= @date %>
 		</div>
 	</div>
-	<div id = "footer">
-		Image from <a href = http://www.flickr.com/photos/kaptainkobold/101348899>Kaptain Kobold</a> on <a href = "http://www.flickr.com">flickr</a>.
-	</div>
-	
-	<script type="text/javascript">
-		$.backstretch("img/a.jpg");
-	</script>
+	<% if @gameon %>
+		<%= erb(:_bg, :layout => false) %>
+	<% else %>
+		<%= erb(:_gameoff, :layout => false) %>
+	<% end %>
 </body>
 </html>

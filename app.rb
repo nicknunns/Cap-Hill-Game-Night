@@ -10,6 +10,7 @@
   
   get '/' do
     @msg = @client.show('chgamenight')['status']['text']
-    @date = @client.show('chgamenight')['status']['created_at']
+    @date = @client.show('chgamenight')['status']['created_at'].split[0..3].join(' ')
+    @gameon = true
     erb :home
   end
