@@ -10,7 +10,9 @@
   
   get '/' do
     @msg = @client.show('chgamenight')['status']['text']
+    if @msg.include? "#gameon"
+      @gameon = true
+    end  
     @date = @client.show('chgamenight')['status']['created_at'].split[0..3].join(' ')
-    @gameon = true
     erb :home
   end
