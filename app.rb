@@ -1,7 +1,8 @@
 # myapp.rb
   require 'rubygems'
   require 'sinatra'
-  require 'twitter_oauth'
+  require 'curl'
+  require 'json'
   
   
   configure do
@@ -10,7 +11,11 @@
   end
   
   before do
-    @client = TwitterOAuth::Client.new 
+    api_uri = 'http://api.twitter.com/1/statuses/user_timeline.json?screen_name='
+    screen_name = 'chgamenight'
+    connection = Curl::Easy.new(api_uri + screen_name)
+    connection.http_get
+    @result = JSON.parse(connection.body_str)
   end
   
   helpers do
@@ -44,14 +49,23 @@
   
   
   get '/' do
-    tweet = @client.show('chgamenight')['status']['text']
-    wrap_tag(tweet)
-    wrap_user(tweet)
-    wrap_url(tweet)
-    @msg = tweet
-    if @msg.include? "#gameon"
-      @gameon = true
-    end  
-    @date = @client.show('chgamenight')['status']['created_at'].split[0..3].join(' ')
+
+    for i in 0...@result.size
+      if @result[i]["text"].match('#gameon')
+        tweet = @result[i]
+        @gameon = true
+        break
+      else
+        tweet = @result[0]
+      end
+    end
+    
+    @msg = tweet["text"]
+    @date = tweet['created_at'].split[0..3].join(' ')
+    
+    wrap_tag(@msg)
+    wrap_user(@msg)
+    wrap_url(@msg)
+        
     erb :home
   end
