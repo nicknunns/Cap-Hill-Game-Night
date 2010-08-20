@@ -1,7 +1,7 @@
 # myapp.rb
   require 'rubygems'
   require 'sinatra'
-  require 'curl'
+  require 'curb'
   require 'json'
   
   
