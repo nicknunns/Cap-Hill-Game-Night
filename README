@@ -1,5 +1,5 @@
-h1. Cap Hill Game Night
+Cap Hill Game Night
 
-A Sinatra app which digs into a twitter account to find the latest tweet and reformat the page content depending on the presence or absence of the *#gameon* hashtag.
+A Sinatra app which digs into a twitter account to find the latest tweet and reformat the page content depending on the presence or absence of the #gameon hashtag.
 
-See it in action at "caphillgamenight.com":http://caphillgamenight.com
+See it in action at http://caphillgamenight.com
