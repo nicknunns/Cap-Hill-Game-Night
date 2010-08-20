@@ -5,8 +5,8 @@
   
   
   configure do
-    twit_uri = 'http://twitter.com/'
-    search_uri = twit_uri + 'search?q=%23'
+    Twit_uri = 'http://twitter.com/'
+    Search_uri = Twit_uri + 'search?q=%23'
   end
   
   before do
@@ -21,7 +21,7 @@
     def wrap_url(msg)
       exp = Regexp.new('http\://[a-zA-Z0-9\-\.]+\.[a-zA-Z]{2,3}(/\S*)?')
       if msg.match(exp)
-        msg.gsub!(exp) { |s| '<a href = "' + s + '">' + s + '</a>'}
+        msg.gsub!(exp) { |s| '<a href="' + s + '">' + s + '</a>'}
       else
         msg
       end
@@ -30,7 +30,7 @@
     def wrap_tag(msg)
       exp = Regexp.new('#[A-Za-z0-9-]+')
       if msg.match(exp)
-        msg.gsub!(exp) { |s| '<a href = "' + search_uri + s[1..-1] + '">' + s + '</a>'}
+        msg.gsub!(exp) { |s| '<a href="' + Search_uri + s[1..-1] + '">' + s + '</a>'}
       else
         msg
       end
@@ -39,7 +39,7 @@
     def wrap_user(msg)
       exp = Regexp.new('@[A-Za-z0-9-]+')
       if msg.match(exp)
-        msg.gsub!(exp) { |s| '<a href = "' + twit_uri + s[1..-1] + '">' + s + '</a>'}
+        msg.gsub!(exp) { |s| '<a href="' + Twit_uri + s[1..-1] + '">' + s + '</a>'}
       else
         msg
       end
@@ -62,9 +62,10 @@
     @msg = tweet["text"]
     @date = tweet['created_at'].split[0..3].join(' ')
     
+    wrap_url(@msg)
     wrap_tag(@msg)
     wrap_user(@msg)
-    wrap_url(@msg)
+
         
     erb :home
   end
