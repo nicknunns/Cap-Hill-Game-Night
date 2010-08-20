@@ -54,6 +54,9 @@
         tweet = @result[i]
         @gameon = true
         break
+      elsif @result[i]["text"].match('#gameoff') 
+        tweet = @result[i]
+        break
       else
         tweet = @result[0]
       end
@@ -65,7 +68,6 @@
     wrap_url(@msg)
     wrap_tag(@msg)
     wrap_user(@msg)
-
-        
+  
     erb :home
   end
